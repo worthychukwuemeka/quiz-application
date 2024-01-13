@@ -1,0 +1,431 @@
+/* importing google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap');
+
+/* Resetting default margin, padding, and box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
+}
+
+/* Setting background color for the body */
+body {
+    background: #ff00bf;
+}
+
+/* Styling text selection */
+::selection {
+    color: #fff;
+    background: #ff00bf;
+}
+
+/* Styling for common classes used in different sections */
+.start_btn, .info_box, .quiz_box, .result_box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Styling for active states of different sections */
+.info_box.activeInfo, .quiz_box.activeQuiz, .result_box.activeResult {
+    opacity: 1;
+    z-index: 5;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Styling for the start button */
+.start_btn button {
+    font-size: 25px;
+    font-weight: 500;
+    color: #ff00bf;
+    padding: 15px 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* Styling for information box */
+.info_box {
+    width: 540px;
+    background: #fff;
+    border-radius: 5px;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* Styling for information box title */
+.info_box .info-title {
+    height: 60px;
+    width: 100%;
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    border-radius: 5px 5px 0 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Styling for information box content */
+.info_box .info-list {
+    padding: 15px 30px;
+}
+
+/* Styling for individual information points */
+.info_box .info-list .info {
+    margin: 5px 0;
+    font-size: 17px;
+}
+
+/* Styling for the span inside information points */
+.info_box .info-list .info span {
+    font-weight: 600;
+    color: #ff00bf;
+}
+
+/* Styling for information box buttons */
+.info_box .buttons {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 30px;
+    border-top: 1px solid lightgrey;
+}
+
+/* Styling for individual buttons inside information box */
+.info_box .buttons button {
+    margin: 0 5px;
+    height: 40px;
+    width: 100px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ff00bf;
+    transition: all 0.3s ease;
+}
+
+/* Styling for quiz box */
+.quiz_box {
+    width: 550px;
+    background: #fff;
+    border-radius: 5px;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* Styling for quiz box header */
+.quiz_box header {
+    position: relative;
+    z-index: 2;
+    height: 70px;
+    padding: 0 30px;
+    background: #fff;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for quiz box title */
+.quiz_box header .title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Styling for quiz box timer */
+.quiz_box header .timer {
+    color: #004085;
+    background: #fcccff;
+    border: 1px solid #ff64ed;
+    height: 45px;
+    padding: 0 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 145px;
+}
+
+/* Styling for timer text */
+.quiz_box header .timer .time_left_txt {
+    font-weight: 400;
+    font-size: 17px;
+    user-select: none;
+}
+
+/* Styling for timer seconds */
+.quiz_box header .timer .timer_sec {
+    font-size: 18px;
+    font-weight: 500;
+    height: 30px;
+    width: 45px;
+    color: #3b3939;
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    background: #fcfdfe;
+    border: 1px solid #b3b5b6;
+    user-select: none;
+}
+
+/* Styling for timer line */
+.quiz_box header .time_line {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 3px;
+    background: #ff00bf;
+}
+
+/* Styling for quiz section */
+section {
+    padding: 25px 30px 20px 30px;
+    background: #fff;
+}
+
+/* Styling for question text */
+section .que_text {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+/* Styling for option list in quiz section */
+section .option_list {
+    padding: 20px 0px;
+    display: block;   
+}
+
+/* Styling for individual options in quiz section */
+section .option_list .option {
+    background: aliceblue;
+    border: 1px solid #84c5fe;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 17px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Styling for last option to remove margin */
+section .option_list .option:last-child {
+    margin-bottom: 0px;
+}
+
+/* Styling for option hover state */
+section .option_list .option:hover {
+    color: #004085;
+    background: #cce5ff;
+    border: 1px solid #b8daff;
+}
+
+/* Styling for correct option */
+section .option_list .option.correct {
+    color: #155724;
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+/* Styling for incorrect option */
+section .option_list .option.incorrect {
+    color: #721c24;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+/* Styling for disabled option */
+section .option_list .option.disabled {
+    pointer-events: none;
+}
+
+/* Styling for option icon */
+section .option_list .option .icon {
+    height: 26px;
+    width: 26px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 13px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    line-height: 24px;
+}
+
+/* Styling for tick icon */
+.option_list .option .icon.tick {
+    color: #23903c;
+    border-color: #23903c;
+    background: #d4edda;
+}
+
+/* Styling for cross icon */
+.option_list .option .icon.cross {
+    color: #a42834;
+    background: #f8d7da;
+    border-color: #a42834;
+}
+
+/* Styling for footer */
+footer {
+    height: 60px;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid lightgrey;
+}
+
+/* Styling for total question span */
+footer .total_que span {
+    display: flex;
+    user-select: none;
+}
+
+/* Styling for paragraph inside total question span */
+footer .total_que span p {
+    font-weight: 500;
+    padding: 0 5px;
+}
+
+/* Styling for first paragraph inside total question span */
+footer .total_que span p:first-child {
+    padding-left: 0px;
+}
+
+/* Styling for quiz control buttons */
+footer button {
+    height: 40px;
+    padding: 0 13px;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    background: #ff00bf;
+    border: 1px solid #ff00bf;
+    line-height: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+}
+
+/* Styling for quiz control button hover state */
+footer button:hover {
+    background: #ca0270;
+}
+
+/* Styling for button show state */
+footer button.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+/* Styling for result box */
+.result_box {
+    background: #fff;
+    border-radius: 5px;
+    display: flex;
+    padding: 25px 30px;
+    width: 450px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* Styling for result box icon */
+.result_box .icon {
+    font-size: 100px;
+    color: #ff00bf;
+    margin-bottom: 10px;
+}
+
+/* Styling for result box complete text */
+.result_box .complete_text {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* Styling for result box score text span */
+.result_box .score_text span {
+    display: flex;
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Styling for result box score text paragraph */
+.result_box .score_text span p {
+    padding: 0 4px;
+    font-weight: 600;
+}
+
+/* Styling for result box buttons */
+.result_box .buttons {
+    display: flex;
+    margin: 20px 0;
+}
+
+/* Styling for individual result box button */
+.result_box .buttons button {
+    margin: 0 10px;
+    height: 45px;
+    padding: 0 20px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ff00bf;
+    transition: all 0.3s ease;
+}
+
+/* Styling for restart button in buttons class */
+.buttons button.restart {
+    color: #fff;
+    background: #ff00bf;
+}
+
+/* Styling for restart button hover state */
+.buttons button.restart:hover {
+    background: #0263ca;
+}
+
+/* Styling for quit button in buttons class */
+.buttons button.quit {
+    color: #ff00bf;
+    background: #fff;
+}
+
+/* Styling for quit button hover state */
+.buttons button.quit:hover{
+    color: #fff;
+    background: #ff00bf;
+}
